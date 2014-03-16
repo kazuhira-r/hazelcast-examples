@@ -28,8 +28,8 @@ class TokenizeMapper extends Mapper[String, String, String, Long] {
       Iterator
         .continually(tokenStream.incrementToken())
         .takeWhile(_ == true)
-        .withFilter(b => TokenizeMapper.isNominal(partOfSpeechAttr.getPartOfSpeech))
-        .map(b => charTermAttr.toString)
+        .withFilter(_ => TokenizeMapper.isNominal(partOfSpeechAttr.getPartOfSpeech))
+        .map(_ => charTermAttr.toString)
         .foreach(token => context.emit(token, 1L))
     } finally {
       tokenStream.end()

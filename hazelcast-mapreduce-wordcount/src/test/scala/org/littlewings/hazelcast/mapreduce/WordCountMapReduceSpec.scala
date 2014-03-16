@@ -82,8 +82,8 @@ class WordCountMapReduceSpec extends FunSpec {
 
   def withHazelcast(instanceNumber: Int)(fun: HazelcastInstance => Unit): Unit = {
     val instances = 
-    (1 to instanceNumber)
-      .map(i => Hazelcast.newHazelcastInstance(new ClasspathXmlConfig("hazelcast.xml")))
+      (1 to instanceNumber)
+        .map(i => Hazelcast.newHazelcastInstance(new ClasspathXmlConfig("hazelcast.xml")))
 
     try {
       try {
