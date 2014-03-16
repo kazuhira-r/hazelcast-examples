@@ -1,0 +1,24 @@
+#RULE trace Hazelcast MapReduce-context
+#CLASS com.hazelcast.mapreduce.impl.task.DefaultContext
+#METHOD <init>
+#AT ENTRY
+#IF TRUE
+#  DO traceln("===================================="), traceStack(), traceln("====================================")
+#ENDRULE
+
+#RULE trace Hazelcast MapReduce-jobsupervisor
+#CLASS com.hazelcast.mapreduce.impl.task.JobSupervisor
+#METHOD <init>
+#AT ENTRY
+#IF TRUE
+#  DO traceln("============== JobSupervisor ======================"), traceln($1.getCombinerFactory()), traceln("=============== JobSupervisor=====================")
+#ENDRULE
+
+RULE trace Hazelcast MapReduce-KeyValueJobOperation
+CLASS com.hazelcast.mapreduce.impl.task.KeyValueJob
+METHOD invoke
+AT ENTRY
+IF TRUE
+  DO traceln("============== ======================"), traceln($0.combinerFactory), traceln("====================================")
+ENDRULE
+
