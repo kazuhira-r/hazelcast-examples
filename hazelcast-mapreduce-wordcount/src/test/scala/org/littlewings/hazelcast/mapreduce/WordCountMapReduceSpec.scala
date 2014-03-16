@@ -31,9 +31,15 @@ class WordCountMapReduceSpec extends FunSpec {
             }
 
             val request = url("http://www.aozora.gr.jp/cards/000148/files/752_14964.html")
-            Jsoup.parse(http(request OK ByteStream).apply(),
-                        "Windows-31J",
-                        "")
+            val is = http(request OK ByteStream).apply()
+
+            try {
+              Jsoup.parse(is,
+                          "Windows-31J",
+                          "")
+            } finally {
+              is.close()
+            }
           } finally {
             http.shutdown()
           }
