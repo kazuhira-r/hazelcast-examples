@@ -2,8 +2,6 @@ package org.littlewings.hazelcast.mapreduce
 
 import scala.collection.JavaConverters._
 
-import java.nio.charset.Charset
-
 import java.io.InputStream
 
 import com.hazelcast.config.ClasspathXmlConfig
