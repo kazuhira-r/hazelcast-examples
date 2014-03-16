@@ -64,7 +64,7 @@ class WordCountMapReduceSpec extends FunSpec {
         val result = future.get
 
         result should have size (10)
-        result should contain theSameElementsAs Seq(
+        result should contain theSameElementsInOrderAs Seq(
           ("おれ", 472),
           ("事", 291),
           ("人", 213),
