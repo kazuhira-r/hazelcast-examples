@@ -15,6 +15,7 @@ object TokenizeMapper {
     NOMINAL_REGEX.findFirstIn(source).isDefined
 }
 
+@SerialVersionUID(1L)
 class TokenizeMapper extends Mapper[String, String, String, Long] {
   override def map(key: String, value: String, context: Context[String, Long]): Unit = {
     val analyzer = new JapaneseAnalyzer(Version.LUCENE_47)

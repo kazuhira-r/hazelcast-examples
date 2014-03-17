@@ -2,11 +2,13 @@ package org.littlewings.hazelcast.mapreduce
 
 import com.hazelcast.mapreduce.{Combiner, CombinerFactory, Context, Mapper, Reducer, ReducerFactory}
 
+@SerialVersionUID(1L)
 class ThreadInspectMapper extends Mapper[String, String, String, String] {
   override def map(key: String, value: String, context: Context[String, String]): Unit =
     context.emit(key, Thread.currentThread.getName + "[mapper]")
 }
 
+@SerialVersionUID(1L)
 class ThreadInspectCombinerFactory extends CombinerFactory[String, String, Iterable[String]] {
   override def newCombiner(key: String): Combiner[String, String, Iterable[String]] =
     new ThreadInspectCombiner
@@ -27,6 +29,7 @@ class ThreadInspectCombiner extends Combiner[String, String, Iterable[String]] {
   }
 }
 
+@SerialVersionUID(1L)
 class ThreadInspectReducerFactory extends ReducerFactory[String, Iterable[String], Iterable[String]] {
   override def newReducer(key: String): Reducer[String, Iterable[String], Iterable[String]] =
     new ThreadInspectReducer

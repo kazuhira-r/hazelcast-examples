@@ -2,11 +2,13 @@ package org.littlewings.hazelcast.mapreduce
 
 import com.hazelcast.mapreduce.{Combiner, CombinerFactory, Context, Mapper, Reducer, ReducerFactory}
 
+@SerialVersionUID(1L)
 class SimpleAllKeysMapper extends Mapper[String, String, String, Int] {
   override def map(key: String, value: String, context: Context[String, Int]): Unit =
     context.emit(key, 1)
 }
 
+@SerialVersionUID(1L)
 class SimpleAllKeysCombinerFactory extends CombinerFactory[String, Int, Int] {
   override def newCombiner(key: String): Combiner[String, Int, Int] =
     new SimpleAllKeysCombiner
@@ -25,6 +27,7 @@ class SimpleAllKeysCombiner extends Combiner[String, Int, Int] {
   }
 }
 
+@SerialVersionUID(1L)
 class SimpleAllKeysReducerFactory extends ReducerFactory[String, Int, Int] {
   override def newReducer(key: String): Reducer[String, Int, Int] =
     new SimpleAllKeysReducer

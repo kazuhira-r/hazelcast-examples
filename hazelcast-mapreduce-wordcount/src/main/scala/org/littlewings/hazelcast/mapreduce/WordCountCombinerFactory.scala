@@ -2,6 +2,7 @@ package org.littlewings.hazelcast.mapreduce
 
 import com.hazelcast.mapreduce.{Combiner, CombinerFactory}
 
+@SerialVersionUID(1L)
 class WordCountCombinerFactory extends CombinerFactory[String, Long, Long] {
   override def newCombiner(key: String): Combiner[String, Long, Long] =
     new WordCountCombiner
