@@ -27,8 +27,6 @@ class SimpleAllKeysMapReduceSpec extends FunSpec
             .reducer(new SimpleAllKeysReducerFactory)
             .submit
 
-        println("!!!!!" + job.getClass)
-
         val result: java.util.Map[String, Int] = future.get
 
         result.get("key1") should be (1)

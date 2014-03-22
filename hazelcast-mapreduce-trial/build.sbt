@@ -17,6 +17,6 @@ scalacOptions ++= Seq("-Xlint", "-deprecation", "-unchecked")
 parallelExecution in Test := false
 
 libraryDependencies ++= Seq(
-  "com.hazelcast" % "hazelcast" % "3.2-RC2",
+  "com.hazelcast" % "hazelcast" % "3.2",
   "org.scalatest" %% "scalatest" % "2.0" % "test"
 )

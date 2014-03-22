@@ -14,11 +14,11 @@
 #  DO traceln("============== JobSupervisor ======================"), traceln($1.getCombinerFactory()), traceln("=============== JobSupervisor=====================")
 #ENDRULE
 
-RULE trace Hazelcast MapReduce-KeyValueJobOperation
-CLASS com.hazelcast.mapreduce.impl.task.KeyValueJob
-METHOD invoke
-AT ENTRY
-IF TRUE
-  DO traceln("============== ======================"), traceln($0.combinerFactory), traceln("====================================")
-ENDRULE
+#RULE trace Hazelcast MapReduce-KeyValueJobOperation
+#CLASS com.hazelcast.mapreduce.impl.task.KeyValueJob
+#METHOD invoke
+#AT ENTRY
+#IF TRUE
+#  DO traceln("============== ======================"), traceln($0.combinerFactory), traceln("====================================")
+#ENDRULE
 
