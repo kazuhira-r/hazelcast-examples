@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.3.xsd"
+           xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <replicatedmap name="default">
+    <!-- replicatedmap default -->
+    <in-memory-format>OBJECT</in-memory-format>
+    <concurrency-level>32</concurrency-level>
+    <replication-delay-millis>100</replication-delay-millis>
+    <async-fillup>true</async-fillup>
+  </replicatedmap>
+
+  <replicatedmap name="sync">
+    <in-memory-format>OBJECT</in-memory-format>
+    <concurrency-level>32</concurrency-level>
+    <replication-delay-millis>0</replication-delay-millis>
+    <async-fillup>false</async-fillup>
+  </replicatedmap>
+</hazelcast>
