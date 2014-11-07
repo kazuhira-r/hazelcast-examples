@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.3.xsd"
+           xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <map name="aggregateMap">
+    <backup-count>1</backup-count>
+  </map>
+
+  <jobtracker name="aggregateJobTracker">
+    <max-thread-size>0</max-thread-size>
+    <queue-size>0</queue-size>
+    <retry-count>0</retry-count>
+    <chunk-size>500</chunk-size>
+    <communicate-stats>true</communicate-stats>
+    <topology-changed-strategy>CANCEL_RUNNING_OPERATION</topology-changed-strategy>
+  </jobtracker>
+</hazelcast>
