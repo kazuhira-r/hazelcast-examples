@@ -3,13 +3,12 @@ package org.littlewings.springboot.hazelcast
 import javax.servlet.http.HttpSession
 
 import org.springframework.stereotype.Controller
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.{ RestController, RequestMapping }
 
 @RestController
-class SimpleController @Autowired() (private val session: HttpSession) {
+class SimpleController {
   @RequestMapping(Array("/hello"))
-  def hello: String = {
+  def hello(session: HttpSession): String = {
     session.getAttribute("counter") match {
       case null =>
         session.setAttribute("counter", Integer.valueOf(1))
