@@ -1,8 +1,9 @@
 package org.littlewings.springboot.hazelcast
 
 import javax.servlet.DispatcherType
+import javax.servlet.http.HttpSessionListener
 
-import com.hazelcast.web.WebFilter
+import com.hazelcast.web.{ SessionListener, WebFilter }
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.context.embedded.FilterRegistrationBean
@@ -29,4 +30,7 @@ class App {
     registration.setOrder(Ordered.HIGHEST_PRECEDENCE)
     registration
   }
+
+  @Bean
+  def hazelcastSessionListener: HttpSessionListener = new SessionListener
 }
