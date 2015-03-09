@@ -10,7 +10,7 @@ class AppConfig {
   @Bean
   def springManagedContext: SpringManagedContext = new SpringManagedContext
 
-  @Bean
+  @Bean(destroyMethod = "shutdown")
   def hazelcast: HazelcastInstance = {
     val config = new Config
     config.setManagedContext(springManagedContext)
