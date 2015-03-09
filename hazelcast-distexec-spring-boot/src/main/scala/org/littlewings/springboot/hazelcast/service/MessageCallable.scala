@@ -13,5 +13,5 @@ class MessageCallable(val message: String) extends Callable[String] with Seriali
   private var messageService: MessageService = _
 
   @throws(classOf[Exception])
-  override def call(): String = messageService.decorate(message: String)
+  override def call(): String = messageService.decorate(message)
 }
