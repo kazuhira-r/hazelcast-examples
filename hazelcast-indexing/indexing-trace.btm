@@ -1,0 +1,39 @@
+RULE trace UnsortedIndexStore
+CLASS com.hazelcast.query.impl.UnsortedIndexStore
+METHOD newIndex
+AT ENTRY
+IF TRUE
+  DO traceln("[Trace UnsortedIndexStore] UnsortedIndexStore, newValue = " + $1 + " :: Thread[" + Thread.currentThread().getName()  + "]")
+ENDRULE
+
+RULE trace SortedIndexStore
+CLASS com.hazelcast.query.impl.SortedIndexStore
+METHOD newIndex
+AT ENTRY
+IF TRUE
+  DO traceln("[Trace SortedIndexStore] SortedIndexStore, newValue = " + $1 + " :: Thread[" + Thread.currentThread().getName()  + "]")
+ENDRULE
+
+RULE trace QueryOperation
+CLASS com.hazelcast.map.impl.operation.QueryOperation
+METHOD run
+AT ENTRY
+IF TRUE
+  DO traceln("[Trace Query] " + $0.predicate + " :: Thread[" + Thread.currentThread().getName()  + "]")
+ENDRULE
+
+RULE trace IndexService
+CLASS com.hazelcast.query.impl.IndexService
+METHOD query
+AT EXIT
+IF TRUE
+  DO traceln("[Trace IndexService] " + $1 + ", " + $! + " :: Thread[" + Thread.currentThread().getName()  + "]")
+ENDRULE
+
+RULE trace BasicMapContextQuerySupport
+CLASS com.hazelcast.map.impl.BasicMapContextQuerySupport
+METHOD queryOnPartition
+AT EXIT
+IF TRUE
+  DO traceln("[Trace BasicMapContextQuerySupport] " + $2 + ", " + $! + " :: Thread[" + Thread.currentThread().getName()  + "]")
+ENDRULE
