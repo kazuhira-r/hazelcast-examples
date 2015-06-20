@@ -46,7 +46,7 @@ public class QueryTest extends HazelcastTestSupport {
                     ps.getPartition("978-4873117188").getOwner()
             );
 
-            SqlPredicate titleQuery = new SqlPredicate("title == 'Javaエンジニア養成読本'");
+            SqlPredicate titleQuery = new SqlPredicate("title = 'Javaエンジニア養成読本'");
             Collection<Book> booksByTitleQuery = map.values(titleQuery);
 
             assertThat(booksByTitleQuery)
