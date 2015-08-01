@@ -1,0 +1,15 @@
+RULE trace JSR107Provider
+CLASS fish.payara.cdi.jsr107.JSR107Producer
+METHOD createCache
+AT ENTRY
+IF TRUE
+  DO traceln("========== JSR107Provider class loader = " + $0.getClass().getClassLoader().getClass().getName() + ", parent class loader = " + $0.getClass().getClassLoader().getParent().getClass().getName() + " =========="), traceStack()
+ENDRULE
+
+RULE trace AbstractCacheService
+CLASS com.hazelcast.cache.impl.AbstractCacheService
+METHOD getOrCreateCache
+AT ENTRY
+IF TRUE
+     DO traceln("========== CacheService class loader = " + $0.getClass().getClassLoader().getClass().getName() + ", parent class loader = " + $0.getClass().getClassLoader().getParent().getClass().getName() + " =========="), traceStack()
+ENDRULE
