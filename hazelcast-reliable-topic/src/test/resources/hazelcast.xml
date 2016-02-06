@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.6.xsd"
+           xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <group>
+        <name>my-cluster</name>
+        <password>my-pass</password>
+    </group>
+    <network>
+        <port auto-increment="true" port-count="100">5701</port>
+        <join>
+            <multicast enabled="true">
+                <multicast-group>224.10.10.3</multicast-group>
+                <multicast-port>54327</multicast-port>
+            </multicast>
+        </join>
+    </network>
+
+    <reliable-topic name="with-ttl">
+        <read-batch-size>10</read-batch-size>
+        <topic-overload-policy>BLOCK</topic-overload-policy>
+        <statistics-enabled>true</statistics-enabled>
+    </reliable-topic>
+
+    <ringbuffer name="with-ttl">
+        <capacity>10000</capacity>
+        <backup-count>1</backup-count>
+        <async-backup-count>0</async-backup-count>
+        <time-to-live-seconds>30</time-to-live-seconds>
+        <in-memory-format>BINARY</in-memory-format>
+    </ringbuffer>
+
+    <reliable-topic name="overload-error-policy">
+        <read-batch-size>10</read-batch-size>
+        <topic-overload-policy>ERROR</topic-overload-policy>
+        <statistics-enabled>true</statistics-enabled>
+    </reliable-topic>
+
+    <ringbuffer name="overload-error-policy">
+        <capacity>10</capacity>
+        <backup-count>1</backup-count>
+        <async-backup-count>0</async-backup-count>
+        <time-to-live-seconds>30</time-to-live-seconds>
+        <in-memory-format>BINARY</in-memory-format>
+    </ringbuffer>
+
+    <reliable-topic name="overload-discard-newest">
+        <read-batch-size>10</read-batch-size>
+        <topic-overload-policy>DISCARD_NEWEST</topic-overload-policy>
+        <statistics-enabled>true</statistics-enabled>
+    </reliable-topic>
+
+    <ringbuffer name="overload-discard-newest">
+        <capacity>10</capacity>
+        <backup-count>1</backup-count>
+        <async-backup-count>0</async-backup-count>
+        <time-to-live-seconds>30</time-to-live-seconds>
+        <in-memory-format>BINARY</in-memory-format>
+    </ringbuffer>
+
+    <reliable-topic name="overload-discard-oldest">
+        <read-batch-size>10</read-batch-size>
+        <topic-overload-policy>DISCARD_OLDEST</topic-overload-policy>
+        <statistics-enabled>true</statistics-enabled>
+    </reliable-topic>
+
+    <ringbuffer name="overload-discard-oldest">
+        <capacity>10</capacity>
+        <backup-count>1</backup-count>
+        <async-backup-count>0</async-backup-count>
+        <time-to-live-seconds>30</time-to-live-seconds>
+        <in-memory-format>BINARY</in-memory-format>
+    </ringbuffer>
+</hazelcast>
