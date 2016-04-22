@@ -26,3 +26,5 @@ project/plugins/project/
 .ensime
 .ensime_cache
 
+# Node.js specific
+node_modules
