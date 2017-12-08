@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.9.xsd"
+           xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <scheduled-executor-service name="configuredScheduledExecSvc">
+        <pool-size>32</pool-size>
+        <durability>2</durability>
+        <capacity>200</capacity>
+    </scheduled-executor-service>
+
+    <scheduled-executor-service name="defaultValuedScheduledExecSvc">
+        <pool-size>16</pool-size>
+        <durability>1</durability>
+        <capacity>100</capacity>
+    </scheduled-executor-service>
+</hazelcast>
